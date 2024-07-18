@@ -117,7 +117,7 @@ public class Main extends Application {
     private Label labelConstXY = new Label("Spawn Point (X,Y):");
     
 	private Pane paneExp = new Pane();
-	private Explorer explorer;
+//	private Explorer explorer;
     private StackPane spExplorer = new StackPane();
 //    private Pane camera = new StackPane();//making this stack pane is a bag idea
     String bgFront = new File(System.getProperty("user.dir")+"\\src\\amongus.png").toURI().toString();
@@ -746,17 +746,17 @@ public class Main extends Application {
         return null;
     }
 
-    private synchronized List<Circle> sballs() {
-        return ball_buf.parallelStream().map(t -> {
-            try {
-                return t.call();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }).collect(Collectors.toList());
-
-    }
+//    private synchronized List<Circle> sballs() {
+//        return ball_buf.parallelStream().map(t -> {
+//            try {
+//                return t.call();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }).collect(Collectors.toList());
+//
+//    }
 
     private void initTabVelocity() {
         gpDistance.getChildren().clear();
