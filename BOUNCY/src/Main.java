@@ -248,6 +248,8 @@ public class Main extends Application {
         //this is going to show lang kunware na the balls that exist in the bounds of the
         // spExplorer is being stored perfectly. Then their layoutXY can be shown in place like, x10 kunware
         //so we can actually see it zoomed in
+        
+        /*//NOTE: FOR TESTING ONLY, REMOVE
         spMiniMap.setLayoutX(0);
         spMiniMap.setPrefHeight(19*10);//The dimensions of the periphery are 19rows by 33 columns, (x10 para we can see what's actually happening)
         spMiniMap.setPrefWidth(33*10);
@@ -265,6 +267,8 @@ public class Main extends Application {
 		);
         spMiniMap.getChildren().add(pSprite);
         pSprite.setMaxSize(30, 30);
+        
+        */
         
 //        -------------------
         
@@ -300,24 +304,24 @@ public class Main extends Application {
                 textTest.setText("Debug: "+isDebug);
                 primaryStage.setWidth(1280);
                 
-                if(hasExplorer) {
-                	//zooms in the middle always,
-                	//so have to adjust position of both ballPane
-                	// - spExplorer's position will be adjusted to middle
-                	// - then paneRight.getWidth()/2 (midpoint) will be added to ballPane instead for it to move to midpoint-position
-
-                	paneRight.setScaleX(4.f);
-                	paneRight.setScaleY(4.f);
-                	
-                    paneExp.setMaxSize(3,3);
-
-                    //TODO: within the box of the stackpane spExplorer,
-                    //get the id / or element num of those and render them to a new box, scaling their x and y to the screen.
-
-                    notif.setText("Elements inside the box are: ");
-                    //for loop to check which are inside
-                    notif.setText(notif.getText()+"ball %d at [%d,%d]");
-	            }
+//                if(hasExplorer) {
+//                	//zooms in the middle always,
+//                	//so have to adjust position of both ballPane
+//                	// - spExplorer's position will be adjusted to middle
+//                	// - then paneRight.getWidth()/2 (midpoint) will be added to ballPane instead for it to move to midpoint-position
+//
+//                	paneRight.setScaleX(4.f);
+//                	paneRight.setScaleY(4.f);
+//                	
+//                    paneExp.setMaxSize(3,3);
+//
+//                    //TODO: within the box of the stackpane spExplorer,
+//                    //get the id / or element num of those and render them to a new box, scaling their x and y to the screen.
+//
+//                    notif.setText("Elements inside the box are: ");
+//                    //for loop to check which are inside
+//                    notif.setText(notif.getText()+"ball %d at [%d,%d]");
+//	            }
                 
                 //zoom in testing
 //                ballPane.setScaleX(2f);
@@ -343,13 +347,13 @@ public class Main extends Application {
                 
                 //zoom testing
                 
-                if(hasExplorer)
-                {
-                	paneRight.setScaleX(1.f);
-                	paneRight.setScaleY(1.f);
-	            	spExplorer.setMaxSize(320, 180);
-	                paneExp.setMaxSize(30,30);
-                }
+//                if(hasExplorer)
+//                {
+//                	paneRight.setScaleX(1.f);
+//                	paneRight.setScaleY(1.f);
+//	            	spExplorer.setMaxSize(320, 180);
+//	                paneExp.setMaxSize(30,30);
+//                }
         	}
         	
         });
@@ -388,13 +392,14 @@ public class Main extends Application {
                 double expY = Double.parseDouble(inputYexp.getText());
         		hasExplorer=!hasExplorer;
         		spExplorer.setVisible(hasExplorer);
+        		
         		if (hasExplorer){
 
                     ballPane.setLayoutX(640-expX);
                     ballPane.setLayoutX(360-expY);
                     ballPane.setScaleX(39);
                     ballPane.setScaleY(38);
-    	            notif.setText("Explorer spawned.");
+    	            notif.setText("Explorer spawned. Entering explorer mode.");
 //                    spExplorer.setBorder(10,10,10,10);
                   //                    spExplorer.setPrefSize(320, 180); //div 4 zoom
 //                    The dimensions of the periphery are 19 rows by 33 columns,
@@ -436,10 +441,10 @@ public class Main extends Application {
         });
         
         scene.setOnKeyPressed(e ->{
-        	//if (!isDebug && hasExplorer) //NOTE: uncomment when done testing
+//        	if (!isDebug && hasExplorer) //NOTE: uncomment when done testing
             if (hasExplorer)
 
-        	{//DONE-could be better, make instead another animationtimer that checks if keys are being pressed or not
+        	{
         		switch(e.getCode())
         		{
         			case W:
@@ -875,13 +880,9 @@ public class Main extends Application {
         double velocityDiff = (endVelocity - startVelocity) / (n);
         double v = startVelocity;
         for (int i = 0; i < n; i++) {
-
             double velocity = v;
-
             addBall(new Particle(startX, startY, Math.toRadians(angle), velocity,es));
-
             v += velocityDiff;
-
         }
         drawBalls(ballPane);
     }

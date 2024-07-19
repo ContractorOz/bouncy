@@ -1,4 +1,5 @@
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,7 @@ public class Particle implements Callable<Circle> {
 	private Circle circle;
 
 	Particle(double x, double y,
-			double theta, double v) {
+			double theta, double v, ExecutorService es) {
 
 		this.x = x;
 		this.y = 720 - y;
